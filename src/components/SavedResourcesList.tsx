@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import ResourceCard from './ResourceCard';
@@ -54,7 +53,15 @@ const SavedResourcesList = () => {
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {mockResources.map((resource) => (
-          <ResourceCard key={resource.id} resource={resource} />
+          <ResourceCard
+            key={resource.id}
+            title={resource.title}
+            description={resource.description}
+            source={resource.source}
+            imageUrl={resource.imageUrl}
+            date={resource.date}
+            categories={resource.categories}
+          />
         ))}
       </div>
       
