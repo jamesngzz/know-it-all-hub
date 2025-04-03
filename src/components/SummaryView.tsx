@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Share2, Image, BarChart2, Download, ExternalLink } from 'lucide-react';
 import SocialShareButtons from './SocialShareButtons';
+import { Link } from 'react-router-dom';
 
 interface SummaryViewProps {
   title: string;
