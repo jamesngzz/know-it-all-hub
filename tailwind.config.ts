@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,39 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Custom color palette for Know-It-All-Hub
+				brand: {
+					purple: {
+						light: '#9b87f5',
+						DEFAULT: '#7E69AB',
+						dark: '#6E59A5',
+					},
+					blue: {
+						light: '#D3E4FD',
+						DEFAULT: '#0EA5E9',
+					},
+					green: {
+						light: '#F2FCE2',
+						DEFAULT: '#10B981',
+					},
+					yellow: {
+						light: '#FEF7CD',
+						DEFAULT: '#F59E0B',
+					},
+					orange: {
+						light: '#FEC6A1',
+						DEFAULT: '#F97316',
+					},
+					pink: {
+						light: '#FFDEE2',
+						DEFAULT: '#D946EF',
+					},
+					gray: {
+						light: '#F1F0FB',
+						DEFAULT: '#8E9196',
+						dark: '#1A1F2C',
+					}
 				}
 			},
 			borderRadius: {
@@ -84,11 +118,16 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'pulse-light': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.8' },
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-light': 'pulse-light 2s ease-in-out infinite',
 			}
 		}
 	},
