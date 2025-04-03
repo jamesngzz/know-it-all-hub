@@ -7,6 +7,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Share2, Image, BarChart2, Download, ExternalLink } from 'lucide-react';
 import SocialShareButtons from './SocialShareButtons';
 import { Link } from 'react-router-dom';
+import SummaryToImageConverter from './SummaryToImageConverter';
+import VisualizationOptions from './VisualizationOptions';
 
 interface SummaryViewProps {
   title: string;
@@ -114,17 +116,24 @@ export default function SummaryView({
             
             <CardContent>
               <div className="prose max-w-none">
-                <TabsContent value="short" className="mt-0">
-                  <p>{summary.short}</p>
-                </TabsContent>
+                <Tabs value={selectedLength} className="hidden">
+                  <TabsContent value="short">
+                    <p>{summary.short}</p>
+                  </TabsContent>
+                  
+                  <TabsContent value="medium">
+                    <p>{summary.medium}</p>
+                  </TabsContent>
+                  
+                  <TabsContent value="full">
+                    <p>{summary.full}</p>
+                  </TabsContent>
+                </Tabs>
                 
-                <TabsContent value="medium" className="mt-0">
-                  <p>{summary.medium}</p>
-                </TabsContent>
-                
-                <TabsContent value="full" className="mt-0">
-                  <p>{summary.full}</p>
-                </TabsContent>
+                {/* Render the current selected summary directly */}
+                {selectedLength === 'short' && <p>{summary.short}</p>}
+                {selectedLength === 'medium' && <p>{summary.medium}</p>}
+                {selectedLength === 'full' && <p>{summary.full}</p>}
               </div>
             </CardContent>
             
@@ -135,15 +144,18 @@ export default function SummaryView({
                   Share
                 </Button>
                 
-                <Button variant="outline" size="sm" className="gap-1">
-                  <Image className="h-4 w-4" />
-                  Save as Image
-                </Button>
+                <SummaryToImageConverter 
+                  title={title}
+                  source={source}
+                  summary={summary.medium}
+                  keyPoints={summary.keyPoints}
+                />
                 
-                <Button variant="outline" size="sm" className="gap-1">
-                  <BarChart2 className="h-4 w-4" />
-                  Visualize
-                </Button>
+                <VisualizationOptions
+                  title={title}
+                  summary={summary.medium}
+                  keyPoints={summary.keyPoints}
+                />
               </div>
               
               <Button variant="ghost" size="sm" className="gap-1">
